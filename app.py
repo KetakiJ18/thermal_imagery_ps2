@@ -1,4 +1,3 @@
-%%writefile app.py
 import streamlit as st
 import rasterio
 import numpy as np
