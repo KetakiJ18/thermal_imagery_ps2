@@ -161,7 +161,7 @@ def feature_three():
 
 # ------------------ Feature 3: ESRGAN Super-Resolution ------------------
 def feature_one():
-    st.title("Satellite Image Super-Resolution with ESRGAN")
+    st.title("Satellite Image Super-Resolution")
     uploaded_file = st.file_uploader("Upload a .tif file", type=["tif"], key="f3_uploader")
 
     if uploaded_file:
