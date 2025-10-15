@@ -115,6 +115,17 @@ def feature_two():
                 rgb_lc[landcover == c] = col
             st.subheader("Land Cover Map")
             st.image(rgb_lc, caption="Land Cover Map", use_column_width=True)
+            st.markdown(
+                """
+                <span style="color:darkgreen;">■</span> Vegetation
+                <span style="color:blue;">■</span> Water
+                <span style="color:gray;">■</span> Urban
+                <span style="color:#D2B48C;">■</span> Bare Soil / Other
+                """,
+                unsafe_allow_html=True
+            )
+
+            st.write("Calculating Temperature Statistics per Land Cover Class...")
 
             # Compute temperature stats
             stats = []
