@@ -27,11 +27,11 @@ def get_esrgan_weights():
     model_path = os.path.join(model_dir, "RealESRGAN_x4plus.pth")
 
     if not os.path.exists(model_path) or os.path.getsize(model_path) < 1000000:
-        st.info("🔽 Downloading RealESRGAN weights (~67MB)... Please wait...")
+        st.info("Downloading RealESRGAN weights (~67MB)... Please wait...")
         import urllib.request
         url = "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth"
         urllib.request.urlretrieve(url, model_path)
-        st.success("✅ RealESRGAN weights downloaded successfully!")
+        st.success("RealESRGAN weights downloaded successfully!")
 
     return model_path
 
@@ -150,14 +150,14 @@ def feature_two():
 
 # ------------------ Feature 3: ESRGAN Super-Resolution ------------------
 def feature_three():
-    st.title("🌈 Satellite Image Super-Resolution with ESRGAN")
+    st.title("Satellite Image Super-Resolution with ESRGAN")
     uploaded_file = st.file_uploader("Upload a .tif file", type=["tif"], key="f3_uploader")
 
     if uploaded_file:
         input_tif = f"/tmp/{uploaded_file.name}"
         with open(input_tif, "wb") as f:
             f.write(uploaded_file.getbuffer())
-        st.info(f"📁 Processing file: {uploaded_file.name}")
+        st.info(f"Processing file: {uploaded_file.name}")
 
         img = tifffile.imread(input_tif)
         if img.ndim == 2:
@@ -168,7 +168,7 @@ def feature_three():
         elif img.ndim == 3 and img.shape[2] >= 3:
             img_rgb = img[:, :, :3]
         else:
-            st.error("❌ Unsupported image format.")
+            st.error("Unsupported image format.")
             return
 
         # Normalize to 0-255 range
@@ -196,14 +196,14 @@ def feature_three():
             device=device
         )
 
-        with st.spinner("⏳ Enhancing image..."):
+        with st.spinner("Enhancing image..."):
             output, _ = upsampler.enhance(img_rgb, outscale=4)
-        st.success("🎉 Enhancement complete!")
+        st.success("Enhancement complete!")
 
         output_tif = f"/tmp/enhanced_{uploaded_file.name}"
         tifffile.imwrite(output_tif, np.uint8(output))
         st.image([img_rgb, output], caption=["Original", "Enhanced"], use_column_width=True)
-        st.download_button("⬇️ Download Enhanced TIFF", data=open(output_tif, "rb"),
+        st.download_button("Download Enhanced TIFF", data=open(output_tif, "rb"),
                            file_name=f"enhanced_{uploaded_file.name}")
 
 
