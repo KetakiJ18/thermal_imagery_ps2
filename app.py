@@ -37,7 +37,7 @@ def get_esrgan_weights():
 
 
 # ------------------ Feature 1: Thermal Anomaly Detection ------------------
-def feature_one():
+def feature_two():
     st.title("Neighborhood Thermal Anomaly Detection")
     st.markdown("Upload a thermal GeoTIFF to detect heat anomalies.")
 
@@ -81,7 +81,7 @@ def feature_one():
 
 
 # ------------------ Feature 2: Land Cover & Temperature Analysis ------------------
-def feature_two():
+def feature_three():
     st.title("Land Cover & Temperature Analysis")
     uploaded_file = st.file_uploader("Upload a .tif file (e.g., Landsat 8)", type=["tif"], key="f2_uploader")
 
@@ -160,7 +160,7 @@ def feature_two():
 
 
 # ------------------ Feature 3: ESRGAN Super-Resolution ------------------
-def feature_three():
+def feature_one():
     st.title("Satellite Image Super-Resolution with ESRGAN")
     uploaded_file = st.file_uploader("Upload a .tif file", type=["tif"], key="f3_uploader")
 
@@ -225,18 +225,19 @@ def main():
     selection = st.sidebar.radio(
         "",
         [
+            "Satellite Image Super-Resolution",
             "Thermal Anomaly Detection",
             "Land Cover & Temperature Analysis",
-            "Satellite Image Super-Resolution",
+            
         ],
     )
 
     if selection == "Thermal Anomaly Detection":
-        feature_one()
-    elif selection == "Land Cover & Temperature Analysis":
         feature_two()
-    elif selection == "Satellite Image Super-Resolution":
+    elif selection == "Land Cover & Temperature Analysis":
         feature_three()
+    elif selection == "Satellite Image Super-Resolution":
+        feature_one()
 
 
 if __name__ == "__main__":
