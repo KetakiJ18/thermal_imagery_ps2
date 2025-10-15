@@ -2,3 +2,5 @@ streamlit
 rasterio
 numpy
 pandas
+matplotlib
+shaply
