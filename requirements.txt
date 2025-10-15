@@ -3,4 +3,4 @@ rasterio
 numpy
 pandas
 matplotlib
-shaply
+shapely
