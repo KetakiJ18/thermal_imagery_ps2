@@ -4,3 +4,9 @@ numpy
 pandas
 matplotlib
 shapely
+tifffile
+opencv-python-headless
+imagecodecs
+torch
+git+https://github.com/xinntao/basicsr.git
+git+https://github.com/xinntao/Real-ESRGAN.git
